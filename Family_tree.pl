@@ -132,3 +132,33 @@ husband(+X) is failure
 Print husband of X
 */
 husband(X):-husband(Y,X), print(Y), nl,!, fail.
+/*
+grand_so(?X,?Y) is det
+True, if X is grandson of Y
+If X or Y missing, find X or Y
+*/
+grand_so(X,Y):-man(X),parent(Y,Z),parent(Z,X).
+/*
+grand_sons(+X) is failure
+Print grand sons of X
+*/
+grand_sons(X):-grand_so(Y,X),print(Y),nl,fail.
+/*
+grand_ma_and_da(?X,?Y) is det
+True, if X is grandma of Y and Y is granddaughter or
+X is granddaughter of Y and Y is grandma for X
+If X or Y missing, find X or Y
+*/
+grand_ma_and_da(X,Y):-woman(X),woman(Y),parent(X,Z),parent(Z,Y).
+grand_ma_and_da(Y,X):-woman(X),woman(Y),parent(X,Z),parent(Z,Y).
+/*
+plemyan(?X,?Y) is det
+True, if X is plemyan of Y
+If X or Y missing, find X or Y
+*/
+plemyan(X,Y):-parent(Z,X),parent(W,Y),man(W),man(Z),dif(W,Z),woman(X).
+/*
+plemyan(+X) is failure
+prints all plemyannits of Y
+*/
+plemyan(Y):-plemyan(X,Y),print(X),nl,fail.

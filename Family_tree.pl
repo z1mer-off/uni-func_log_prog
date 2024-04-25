@@ -109,3 +109,26 @@ b_s(+X) is failure
 Print all sisters of brother X
 */
 b_s(X):- b_s(X, Y), X\=Y, print(Y), nl, fail.
+
+/*
+son(?X,?Y) is det
+True, if X is son of Y
+If X or Y missing, find X or Y
+*/
+son(X,Y):-parent(Y,X),man(X).
+/*
+son(+X) is failure
+Print all sons of X
+*/
+son(X):-son(Y,X), print(Y), nl, fail.
+/*
+husband(?X,?Y) is det
+True, if X is husband of Y
+If X or Y missing, find X or Y
+*/
+husband(X,Y):-man(X),woman(Y),parent(X,Z),parent(Y,Z).
+/*
+husband(+X) is failure
+Print husband of X
+*/
+husband(X):-husband(Y,X), print(Y), nl,!, fail.

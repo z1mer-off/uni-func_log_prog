@@ -52,4 +52,4 @@ class Task3ReccurentFunctions{
     }
 }
 
-fun main() = Task2CyclikFunctions().main()
+fun main() = Task3ReccurentFunctions().main()
